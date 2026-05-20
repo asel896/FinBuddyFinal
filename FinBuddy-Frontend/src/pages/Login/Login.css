@@ -1,0 +1,323 @@
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+.scene {
+  width: 100vw;
+  height: 100vh;
+  background: #030b15;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: -apple-system, 'Segoe UI', sans-serif;
+}
+
+.bg-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+/* ---- CARD ---- */
+.card {
+  position: relative;
+  width: 100%;
+  max-width: 860px;
+  min-height: 20px; /* İçeriğe göre artırabilirsin */
+  background: rgba(6, 18, 38, 0.88);
+  border-radius: 30px;
+  overflow: hidden; /* CRITICAL: Dışarı taşan Register formunu gizler */
+  display: block;   /* Flex olmamalı, içindeki track flex olacak */
+  
+}
+
+/* ---- SLIDE TRACK ---- */
+.slide-track {
+  display: flex;
+  width: 200%; /* İki slide yan yana */
+  height: 100%;
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1); /* Geçiş animasyonu */
+}
+
+.slide-track.to-register {
+  transform: translateX(-50%);
+}
+
+.slide {
+  width: 50%; /* 200% içinde 50%, yani kartın tam genişliği */
+  height: 100%;
+  display: flex;
+  flex-shrink: 0; /* Slide'ların küçülmesini engellemek için */
+}
+
+/* ---- LEFT ---- */
+.left {
+  width: 44%;
+  border-right: 1px solid rgba(20, 184, 166, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  padding: 36px 24px;
+}
+
+/* ---- RIGHT ---- */
+.right {
+  flex: 1;
+  padding: 38px 34px;
+  display: flex;
+  flex-direction: column;
+  gap: 13px;
+  justify-content: center;
+}
+
+/* ---- OCTO ---- */
+.octo-body {
+  width: 86px;
+  height: 86px;
+  background: #14b8a6;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: bob 3.5s ease-in-out infinite;
+  box-shadow: 0 0 26px rgba(20, 184, 166, 0.38);
+  cursor: default;
+}
+
+.octo-body.green {
+  background: #22d3a8;
+}
+
+@keyframes bob {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-9px); }
+}
+
+.eyes { display: flex; gap: 13px; }
+
+.eye {
+  width: 17px;
+  height: 17px;
+  background: #fff;
+  border-radius: 50%;
+  position: relative;
+}
+
+.pupil {
+  width: 8px;
+  height: 8px;
+  background: #062a30;
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: transform 0.06s;
+}
+
+.brand-tag {
+  font-size: 11px;
+  letter-spacing: 2.5px;
+  color: rgba(100, 255, 218, 0.55);
+  text-transform: uppercase;
+}
+
+.left-title {
+  font-size: 14px;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.72);
+  line-height: 1.55;
+}
+
+.left-title span { color: #64ffda; }
+
+/* ---- FORM ---- */
+.form-header {
+  color: #e2f0f9;
+  font-size: 21px;
+  font-weight: 600;
+}
+
+.form-sub {
+  font-size: 12.5px;
+  color: rgba(255, 255, 255, 0.38);
+  margin-top: 3px;
+}
+
+.inp {
+  width: 100%;
+  padding: 11px 14px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 11px;
+  color: #fff;
+  font-size: 13.5px;
+  outline: none;
+  transition: border-color 0.2s, background 0.2s;
+}
+
+.inp:focus {
+  border-color: #14b8a6;
+  background: rgba(20, 184, 166, 0.07);
+}
+
+.inp::placeholder {
+  color: rgba(255, 255, 255, 0.28);
+}
+
+.divebtn {
+  width: 100%;
+  padding: 12px;
+  background: #14b8a6;
+  border: none;
+  border-radius: 11px;
+  color: #03342c;
+  font-weight: 700;
+  font-size: 14px;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: background 0.2s, transform 0.15s;
+}
+
+.divebtn:hover  { background: #0d9488; transform: translateY(-2px); }
+.divebtn:active { transform: translateY(0); }
+
+.shine {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(105deg, transparent 38%, rgba(255,255,255,.18) 50%, transparent 62%);
+  transform: translateX(-100%);
+  animation: shine 3s infinite 1.2s;
+}
+
+@keyframes shine {
+  0%, 100% { transform: translateX(-100%); }
+  45%, 55% { transform: translateX(100%); }
+}
+
+.footer-txt {
+  font-size: 12.5px;
+  color: rgba(255, 255, 255, 0.35);
+  text-align: center;
+}
+
+.footer-txt span {
+  color: #14b8a6;
+  cursor: pointer;
+  transition: text-shadow 0.2s;
+}
+
+.footer-txt span:hover {
+  text-shadow: 0 0 8px rgba(20, 184, 166, 0.6);
+}
+
+/* ---- DIVE OVERLAY ---- */
+.dive-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 100;
+  background: radial-gradient(circle at center, #0a2e2a 0%, #030b15 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+.dive-msg {
+  color: #64ffda;
+  font-size: 24px;
+  font-weight: 300;
+  letter-spacing: 8px;
+  text-transform: uppercase;
+  margin-top: 30px;
+  text-shadow: 0 0 15px rgba(100, 255, 218, 0.6);
+  animation: pulseText 2s ease-in-out infinite;
+}
+
+
+
+.bubble-current-field {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+} 
+
+.bbub {
+  position: absolute;
+  bottom: -20px;
+  background: rgba(100, 255, 218, 0.4);
+  box-shadow: 0 0 10px rgba(100, 255, 218, 0.2), inset 0 0 5px white;
+  border-radius: 50%;
+  animation: floatUp 2.5s infinite ease-in;
+}
+
+@keyframes floatUp {
+  0% { transform: translateY(0) scale(0.5); opacity: 0; }
+  20% { opacity: 0.8; }
+  100% { transform: translateY(-300px) scale(1.5); opacity: 0; }
+}
+
+@keyframes pulseText {
+  0%, 100% { opacity: 0.5; filter: blur(1px); }
+  50% { opacity: 1; filter: blur(0px); }
+}
+
+/* Su Dalgası Efekti (Arka Plan için) */
+.dive-overlay::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: url('https://www.transparenttextures.com/patterns/carbon-fibre.png');
+  opacity: 0.05;
+  pointer-events: none;
+}
+.lottie-wrap {
+  width: 300px;
+  height: 300px;
+}
+.lottie-container {
+  position: relative;
+  width: 180px;  /* istediğin boyut */
+  height: 180px;
+}
+/* ---- PASSWORD STRENGTH METER ---- */
+.strength-wrapper {
+  width: 100%;
+  max-width: 280px; /* Input genişliğine göre optimize et */
+  margin: 6px auto 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 5px;
+}
+
+.strength-bars {
+  width: 100%;
+  display: flex;
+  gap: 4px; /* Barların arasındaki boşluk */
+}
+
+.strength-bar {
+  flex: 1;
+  height: 4px;
+  border-radius: 2px;
+  transition: background-color 0.3s ease;
+}
+
+.strength-label {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  transition: color 0.3s ease;
+  margin-left: 2px;
+}
+
+
+

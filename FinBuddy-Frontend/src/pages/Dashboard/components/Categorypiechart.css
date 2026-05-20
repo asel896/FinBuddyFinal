@@ -1,0 +1,278 @@
+/* CategoryPieChart.css */
+
+.cpc-card {
+  background: #151c2c;
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 20px;
+  padding: 28px 28px 20px;
+  font-family: 'DM Sans', 'Segoe UI', sans-serif;
+  color: #e2e8f0;
+}
+
+/* ── Header ── */
+.cpc-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 24px;
+  gap: 12px;
+}
+
+.cpc-title {
+  font-size: 17px;
+  font-weight: 700;
+  color: #f1f5f9;
+  margin: 0 0 4px;
+  letter-spacing: -0.3px;
+}
+
+.cpc-subtitle {
+  font-size: 12px;
+  color: #8892a4;
+  margin: 0;
+}
+
+.cpc-total-badge {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 2px;
+  flex-shrink: 0;
+}
+
+.cpc-total-label {
+  font-size: 11px;
+  color: #8892a4;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-weight: 500;
+}
+
+.cpc-total-value {
+  font-size: 18px;
+  font-weight: 700;
+  color: #f1f5f9;
+  letter-spacing: -0.5px;
+}
+
+/* ── Body: pasta + liste yan yana ── */
+.cpc-body {
+  display: flex;
+  gap: 24px;
+  align-items: flex-start;
+}
+
+/* ── Pasta ── */
+.cpc-chart-wrap {
+  position: relative;
+  flex-shrink: 0;
+  width: 220px;
+}
+
+/* Ortadaki yazı — pastanın tam merkezine absolute */
+.cpc-center-label {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  pointer-events: none;
+  text-align: center;
+}
+
+.cpc-center-pct {
+  font-size: 22px;
+  font-weight: 700;
+  color: #f1f5f9;
+  line-height: 1;
+}
+
+.cpc-center-cat {
+  font-size: 11px;
+  color: #8892a4;
+  margin-top: 3px;
+  max-width: 70px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* ── Liste ── */
+.cpc-list {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-width: 0;
+  max-height: 220px;
+  overflow-y: auto;
+  padding-right: 4px;
+}
+
+.cpc-list::-webkit-scrollbar {
+  width: 3px;
+}
+.cpc-list::-webkit-scrollbar-track {
+  background: transparent;
+}
+.cpc-list::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+}
+
+.cpc-list-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 10px;
+  border-radius: 10px;
+  cursor: default;
+  transition: background 0.15s ease;
+}
+
+.cpc-list-item:hover,
+.cpc-list-item--active {
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.cpc-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.cpc-list-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.cpc-list-top {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 5px;
+}
+
+.cpc-list-name {
+  font-size: 13px;
+  font-weight: 500;
+  color: #cbd5e1;
+  flex: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.cpc-list-amount {
+  font-size: 12px;
+  font-weight: 600;
+  color: #f1f5f9;
+  flex-shrink: 0;
+}
+
+.cpc-list-pct {
+  font-size: 11px;
+  color: #8892a4;
+  flex-shrink: 0;
+  min-width: 36px;
+  text-align: right;
+}
+
+/* ── Progress bar ── */
+.cpc-bar-track {
+  width: 100%;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.07);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.cpc-bar-fill {
+  height: 100%;
+  border-radius: 4px;
+  transition: width 0.4s ease;
+  opacity: 0.85;
+}
+
+/* ── Tooltip ── */
+.cpc-tooltip {
+  background: #1e2a3a;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  padding: 10px 14px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+  min-width: 140px;
+}
+
+.cpc-tooltip__cat {
+  font-size: 12px;
+  font-weight: 600;
+  color: #e2e8f0;
+  margin-bottom: 6px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.cpc-tooltip__row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.cpc-tooltip__val {
+  font-size: 13px;
+  font-weight: 700;
+  color: #f1f5f9;
+}
+
+.cpc-tooltip__pct {
+  font-size: 12px;
+  color: #8892a4;
+}
+
+/* ── Responsive ── */
+@media (max-width: 520px) {
+  .cpc-body {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .cpc-list {
+    width: 100%;
+    max-height: unset;
+  }
+}
+/* ── Light mod overrides ── */
+.cpc-card--light {
+  background: #ffffff;
+  border-color: rgba(0,0,0,0.07);
+}
+
+.cpc-card--light .cpc-title    { color: #1a202c; }
+.cpc-card--light .cpc-subtitle { color: #64748b; }
+.cpc-card--light .cpc-total-label { color: #94a3b8; }
+.cpc-card--light .cpc-total-value { color: #1a202c; }
+.cpc-card--light .cpc-center-pct  { color: #1a202c; }
+.cpc-card--light .cpc-center-cat  { color: #94a3b8; }
+.cpc-card--light .cpc-list-name   { color: #475569; }
+.cpc-card--light .cpc-list-amount { color: #1a202c; }
+.cpc-card--light .cpc-list-pct    { color: #94a3b8; }
+.cpc-card--light .cpc-bar-track   { background: rgba(0,0,0,0.07); }
+.cpc-card--light .cpc-list-item:hover,
+.cpc-card--light .cpc-list-item--active { background: rgba(0,0,0,0.04); }
+
+.cpc-tooltip--light {
+  background: #ffffff;
+  border-color: rgba(0,0,0,0.1);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+}
+.cpc-tooltip--light .cpc-tooltip__cat {
+  color: #1a202c;
+  border-bottom-color: rgba(0,0,0,0.07);
+}
+.cpc-tooltip--light .cpc-tooltip__val { color: #1a202c; }
+.cpc-tooltip--light .cpc-tooltip__pct { color: #64748b; }

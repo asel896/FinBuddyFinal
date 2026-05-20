@@ -1,0 +1,440 @@
+/* ─────────────────────────────────────────
+   ExpensesPanel.css
+   InsightsPanel ile tutarlı dark dashboard
+   #151c2c / #1a2234 base
+───────────────────────────────────────── */
+
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Syne:wght@700;800&display=swap');
+
+/* ── Panel kapsayıcı ── */
+.tab-panel {
+  padding: 28px;
+  font-family: 'DM Sans', 'Segoe UI', sans-serif;
+  color: #e2e8f0;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* ── Başlık ── */
+.tab-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.tab-header h2 {
+  font-family: 'Syne', sans-serif;
+  font-size: 20px;
+  font-weight: 800;
+  color: #f1f5f9;
+  margin: 0 0 4px;
+  letter-spacing: -0.4px;
+}
+
+.tab-header p {
+  font-size: 12px;
+  color: #64748b;
+  margin: 0;
+  font-weight: 500;
+}
+
+/* ── Ekle butonu ── */
+.add-btn {
+  padding: 9px 18px;
+  border-radius: 10px;
+  border: 1px solid rgba(20, 184, 166, 0.35);
+  background: rgba(20, 184, 166, 0.1);
+  color: #2dd4bf;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s, transform 0.15s;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.add-btn:hover {
+  background: rgba(20, 184, 166, 0.18);
+  border-color: rgba(20, 184, 166, 0.55);
+  transform: translateY(-1px);
+}
+
+.add-btn:active {
+  transform: translateY(0);
+}
+
+/* ── Input ortak ── */
+.db-inp {
+  width: 100%;
+  padding: 11px 14px;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.04);
+  color: #e2e8f0;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px;
+  outline: none;
+  transition: border-color 0.2s, background 0.2s;
+  box-sizing: border-box;
+}
+
+.db-inp::placeholder {
+  color: #475569;
+}
+
+.db-inp:focus {
+  border-color: rgba(20, 184, 166, 0.4);
+  background: rgba(20, 184, 166, 0.05);
+}
+
+/* ── Harcama ekleme formu ── */
+.add-expense-form {
+  background: rgba(20, 184, 166, 0.05);
+  border: 1px solid rgba(20, 184, 166, 0.15);
+  border-radius: 16px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  animation: slideUp 0.25s ease both;
+}
+
+/* ── Mood picker ── */
+.mood-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 12px;
+  font-weight: 500;
+  color: #64748b;
+  flex-wrap: wrap;
+}
+
+.mood-picker {
+  display: flex;
+  gap: 6px;
+}
+
+.mood-btn {
+  background: transparent;
+  border: 2px solid transparent;
+  border-radius: 10px;
+  padding: 4px;
+  cursor: pointer;
+  transition: border-color 0.15s, transform 0.15s, background 0.15s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mood-btn:hover {
+  transform: scale(1.15);
+}
+
+.mood-btn.selected {
+  border-color: #14b8a6;
+  background: rgba(20, 184, 166, 0.15);
+  transform: scale(1.1);
+}
+
+/* ── Harcama listesi ── */
+.expense-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* ── Tekil harcama kartı ── */
+.expense-card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 18px;
+  background: #1a2234;
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 14px;
+  transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+  animation: slideUp 0.35s ease both;
+}
+
+.expense-card:nth-child(1) { animation-delay: 0.04s; }
+.expense-card:nth-child(2) { animation-delay: 0.08s; }
+.expense-card:nth-child(3) { animation-delay: 0.12s; }
+.expense-card:nth-child(4) { animation-delay: 0.16s; }
+.expense-card:nth-child(5) { animation-delay: 0.20s; }
+
+.expense-card:hover {
+  background: rgba(255, 255, 255, 0.05);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+}
+
+.expense-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.expense-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  min-width: 0;
+}
+
+.expense-desc {
+  font-size: 14px;
+  font-weight: 500;
+  color: #e2e8f0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.expense-meta {
+  font-size: 11.5px;
+  color: #475569;
+}
+
+.expense-mood-lottie {
+  transition: transform 0.2s;
+  flex-shrink: 0;
+}
+
+.expense-card:hover .expense-mood-lottie {
+  transform: scale(1.15);
+}
+
+.expense-amount {
+  font-family: 'Syne', sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: #f97066;
+  white-space: nowrap;
+  letter-spacing: -0.3px;
+}
+
+/* ── Giriş animasyonu ── */
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ── Responsive ── */
+@media (max-width: 480px) {
+  .tab-panel {
+    padding: 20px 16px;
+  }
+
+  .tab-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .expense-card {
+    padding: 12px 14px;
+    gap: 10px;
+  }
+
+  .expense-amount {
+    font-size: 13px;
+  }
+}
+.expense-delete {
+  opacity: 0;
+  background: none;
+  border: none;
+  color: #f87171;
+  font-size: 16px;
+  cursor: pointer;
+  transition: opacity 0.2s, transform 0.2s;
+  padding: 4px;
+  border-radius: 6px;
+}
+
+.expense-card:hover .expense-delete {
+  opacity: 1;
+}
+
+.expense-delete:hover {
+  transform: scale(1.2);
+  background: rgba(248, 113, 113, 0.1);
+}
+.total-badge {
+  background: rgba(20, 184, 166, 0.1);
+  border: 1px solid rgba(20, 184, 166, 0.2);
+  border-radius: 8px;
+  padding: 4px 10px;
+  font-family: 'Syne', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  color: #2dd4bf;
+}
+.expense-empty {
+  text-align: center;
+  padding: 40px 20px;
+  color: #475569;
+  font-size: 13px;
+}
+/* ── Filtre toggle butonu ── */
+.filter-toggle-btn {
+  padding: 9px 16px;
+  border-radius: 10px;
+  border: 1px solid rgba(255,255,255,0.1);
+  background: transparent;
+  color: rgba(255,255,255,0.5);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+
+.filter-toggle-btn:hover,
+.filter-toggle-btn.active {
+  background: rgba(20,184,166,0.1);
+  border-color: rgba(20,184,166,0.3);
+  color: #2dd4bf;
+}
+
+/* ── Filtre paneli ── */
+.filter-panel {
+  background: rgba(20,184,166,0.03);
+  border: 1px solid rgba(20,184,166,0.12);
+  border-radius: 16px;
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  animation: slideUp 0.2s ease both;
+}
+
+.filter-group {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.filter-label {
+  font-size: 11px;
+  font-weight: 600;
+  color: #64748b;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  min-width: 64px;
+  flex-shrink: 0;
+}
+
+.filter-pills {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.filter-pill {
+  padding: 5px 12px;
+  border-radius: 20px;
+  border: 1px solid rgba(255,255,255,0.08);
+  background: transparent;
+  color: rgba(255,255,255,0.45);
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.filter-pill:hover {
+  border-color: rgba(20,184,166,0.3);
+  color: rgba(255,255,255,0.8);
+}
+
+.filter-pill.active {
+  background: rgba(20,184,166,0.15);
+  border-color: #14b8a6;
+  color: #2dd4bf;
+  font-weight: 600;
+}
+
+.filter-clear-btn {
+  align-self: flex-start;
+  padding: 6px 14px;
+  border-radius: 8px;
+  border: 1px solid rgba(248,113,113,0.25);
+  background: rgba(248,113,113,0.08);
+  color: #f87171;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.filter-clear-btn:hover {
+  background: rgba(248,113,113,0.15);
+  border-color: rgba(248,113,113,0.4);
+}
+
+/* ── Light tema ── */
+.theme-light .filter-toggle-btn {
+  border-color: rgba(0,0,0,0.1);
+  color: #64748b;
+}
+.theme-light .filter-toggle-btn:hover,
+.theme-light .filter-toggle-btn.active {
+  background: rgba(13,148,136,0.08);
+  border-color: rgba(13,148,136,0.25);
+  color: #0d9488;
+}
+
+.theme-light .filter-panel {
+  background: #f8fafc;
+  border-color: rgba(0,0,0,0.07);
+}
+
+.theme-light .filter-pill {
+  border-color: rgba(0,0,0,0.08);
+  color: #64748b;
+}
+.theme-light .filter-pill:hover {
+  border-color: rgba(13,148,136,0.3);
+  color: #1a202c;
+}
+.theme-light .filter-pill.active {
+  background: rgba(13,148,136,0.1);
+  border-color: #0d9488;
+  color: #0d9488;
+}
+.category-select-row {
+  width: 100%;
+}
+
+.select-inp {
+  width: 100%;
+  cursor: pointer;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%2314b8a6' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><polyline points='6 9 12 15 18 9'></polyline></svg>");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  background-size: 16px;
+  padding-right: 35px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+/* Açılır listenin içindeki opsiyon pencerelerinin koyu temaya uyumu */
+.select-inp option {
+  background-color: #0f172a; /* Projenizin kart rengine göre ayarlayabilirsiniz */
+  color: #fff;
+  padding: 10px;
+}

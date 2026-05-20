@@ -1,0 +1,327 @@
+/* ── GOAL CARDS ── */
+.goal-card {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 18px;
+  padding: 22px;
+  margin-bottom: 16px;
+}
+
+.goal-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 14px;
+}
+
+.goal-name { font-size: 16px; font-weight: 600; color: #e2f0f9; }
+.goal-sub  { font-size: 13px; color: rgba(255,255,255,0.4); margin-top: 2px; }
+.goal-pct  { margin-left: auto; font-size: 22px; font-weight: 700; color: #64ffda; }
+
+.goal-bar {
+  height: 10px;
+  background: rgba(255,255,255,0.08);
+  border-radius: 4px;
+  overflow: hidden;
+  margin-bottom: 14px;
+}
+
+.goal-fill {
+  height: 100%;
+  background: #0a7065;
+  border-radius: 4px;
+  transition: width 0.8s ease;
+}
+
+/* ── Goal insight box ── */
+.goal-insight {
+  font-size: 13px;
+  color: rgba(255,255,255,0.5);
+  background: rgba(20,184,166,0.06);
+  border-radius: 10px;
+  padding: 10px 14px;
+  line-height: 1.5;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.goal-insight strong { color: #64ffda; }
+
+.goal-octo-wrap {
+  flex-shrink: 0;
+  display: inline-flex;
+}
+/* ── Form elemanları — mevcut GoalsPanel.css'in sonuna ekle ── */
+
+.goal-input {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 10px;
+  padding: 10px 14px;
+  color: #e2f0f9;
+  font-size: 13px;
+  outline: none;
+  box-sizing: border-box;
+  margin-bottom: 10px;
+  transition: border-color 0.2s;
+}
+
+.goal-input:focus {
+  border-color: #000000;
+}
+
+.goal-input::placeholder {
+  color: rgba(255, 255, 255, 0.25);
+}
+
+.goal-input[type="number"]::-webkit-inner-spin-button,
+.goal-input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+}
+
+.goal-input-row {
+  display: flex;
+  gap: 10px;
+}
+
+.goal-input-row .goal-input {
+  flex: 1;
+}
+
+.goal-color-row {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 4px;
+}
+
+.goal-color-dot {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  border: 2px solid transparent;
+  cursor: pointer;
+  padding: 0;
+  transition: transform 0.15s, border-color 0.15s;
+}
+
+.goal-color-dot.active {
+  border-color: #fff;
+  transform: scale(1.25);
+}
+
+.goal-add-btn {
+  width: 100%;
+  margin-top: 14px;
+  padding: 11px;
+  border: 1px solid rgba(20, 184, 166, 0.25);
+  border-radius: 10px;
+  background: rgba(20, 184, 166, 0.08);
+  color: #64ffda;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.goal-add-btn:hover:not(:disabled) {
+  background: rgba(20, 184, 166, 0.18);
+}
+
+.goal-add-btn:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.goal-add-btn.success {
+  background: rgba(20, 184, 166, 0.25);
+  border-color: #14b8a6;
+}
+/* ── Mevcut GoalsPanel.css'in sonuna ekle ── */
+
+
+
+/* Form input stilleri */
+.goal-input {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 10px;
+  padding: 10px 14px;
+  color: #e2f0f9;
+  font-size: 13px;
+  outline: none;
+  box-sizing: border-box;
+  margin-bottom: 10px;
+  transition: border-color 0.2s;
+}
+
+.goal-input:focus { border-color: #14b8a6; }
+.goal-input::placeholder { color: rgba(255, 255, 255, 0.25); }
+.goal-input[type="number"]::-webkit-inner-spin-button,
+.goal-input[type="number"]::-webkit-outer-spin-button { -webkit-appearance: none; }
+
+.goal-input-row { display: flex; gap: 10px; }
+.goal-input-row .goal-input { flex: 1; }
+
+.goal-color-row { display: flex; gap: 10px; margin-bottom: 4px; }
+
+.goal-color-dot {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  border: 2px solid transparent;
+  cursor: pointer;
+  padding: 0;
+  transition: transform 0.15s, border-color 0.15s;
+}
+
+.goal-color-dot.active { border-color: #fff; transform: scale(1.25); }
+
+.goal-add-btn {
+  width: 100%;
+  margin-top: 14px;
+  padding: 11px;
+  border: 1px solid rgba(20, 184, 166, 0.25);
+  border-radius: 10px;
+  background: rgba(20, 184, 166, 0.08);
+  color: #64ffda;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.goal-add-btn:hover:not(:disabled) { background: rgba(20, 184, 166, 0.18); }
+.goal-add-btn:disabled { opacity: 0.3; cursor: not-allowed; }
+.goal-add-btn.success { background: rgba(20, 184, 166, 0.25); border-color: #14b8a6; }
+
+/* ═══════════════════════════════════════
+   LIGHT TEMA — GOALS
+═══════════════════════════════════════ */
+.theme-light .goal-card {
+  background: #ffffff;
+  border-color: rgba(0,0,0,0.07);
+}
+
+.theme-light .goal-name { color: #1a202c; }
+.theme-light .goal-sub  { color: #64748b; }
+.theme-light .goal-pct  { color: #0d9488; }
+
+.theme-light .goal-bar  { background: rgba(0,0,0,0.08); }
+
+.theme-light .goal-insight {
+  background: rgba(13,148,136,0.06);
+  color: #475569;
+}
+.theme-light .goal-insight strong { color: #0d9488; }
+
+.theme-light .goal-input {
+  background: #f8fafc;
+  border-color: rgba(0,0,0,0.1);
+  color: #1a202c;
+}
+.theme-light .goal-input::placeholder { color: #94a3b8; }
+.theme-light .goal-input:focus { border-color: #0d9488; }
+
+.theme-light .goal-add-btn {
+  background: rgba(13,148,136,0.08);
+  border-color: rgba(13,148,136,0.25);
+  color: #0d9488;
+}
+.theme-light .goal-add-btn:hover:not(:disabled) {
+  background: rgba(13,148,136,0.15);
+}
+
+.theme-light .goal-color-dot.active { border-color: #1a202c; }
+
+/* ── Dalga efekti ── */
+.goal-bar {
+  position: relative;
+}
+
+.goal-fill--complete {
+  position: relative;
+  overflow: hidden;
+}
+
+.goal-fill--complete::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 75%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.6) 50%,
+    transparent 100%
+  );
+  animation: wave 1.2s ease-in-out infinite;
+}
+
+@keyframes wave {
+  0%   { left: -100%; }
+  100% { left: 100%;  }
+}
+
+/* Tamamlanan kart */
+.goal-card--complete {
+  border-color: rgba(20, 184, 166, 0.35);
+  background: rgba(20, 184, 166, 0.04);
+}
+
+.goal-card--complete .goal-pct {
+  color: #4ade80;
+}
+
+.goal-complete-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 10px;
+  padding: 6px 14px;
+  background: rgba(74, 222, 128, 0.1);
+  border: 1px solid rgba(74, 222, 128, 0.25);
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #4ade80;
+  animation: badgePop 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) both;
+}
+
+@keyframes badgePop {
+  from { opacity: 0; transform: scale(0.7); }
+  to   { opacity: 1; transform: scale(1);   }
+}
+/* Silme butonu genel stilleri */
+.expense-delete {
+  background: rgba(239, 68, 68, 0.1); /* Hafif kırmızı transparan zemin */
+  color: #ef4444;                     /* Canlı kırmızı yazı */
+  border: 1px solid rgba(239, 68, 68, 0.2);
+  border-radius: 8px;
+  padding: 6px 12px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+/* Hover (fare üzerine gelince) efektleri */
+.expense-delete:hover {
+  background: rgba(239, 68, 68, 0.2); /* Biraz daha koyulaşır */
+  border-color: rgba(239, 68, 68, 0.4);
+  transform: translateY(-1px);      /* Hafif yukarı zıplar */
+  box-shadow: 0 4px 12px rgba(239, 68, 68, 0.2);
+}
+
+/* Tıklama anında basılma efekti */
+.expense-delete:active {
+  transform: translateY(0);
+  background: rgba(239, 68, 68, 0.3);
+}

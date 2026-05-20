@@ -1,0 +1,577 @@
+/* ── RECEIPT PANEL ── */
+.receipt-panel {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(20, 184, 166, 0.2) transparent;
+  padding-bottom: 40px;
+}
+
+/* ── UPLOAD ZONE (Yükleme Alanı) ── */
+.upload-zone {
+  margin: 28px 28px 0;
+  border: 2px dashed rgba(100, 255, 218, 0.2);
+  border-radius: 24px;
+  padding: 56px 28px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  background: #1c1a2e; /* Profil kartıyla eşitlenen asil koyu arka plan */
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.upload-zone:hover,
+.upload-zone.drag-over {
+  border-color: #64ffda;
+  background: #222038;
+  transform: translateY(-2px);
+  box-shadow: 0 12px 40px rgba(20, 184, 166, 0.15);
+}
+
+.upload-zone.has-file {
+  border-style: solid;
+  border-color: rgba(20, 184, 166, 0.3);
+  padding: 32px;
+}
+
+.upload-icon {
+  width: 64px;
+  height: 64px;
+  background: rgba(20, 184, 166, 0.08);
+  border: 1px solid rgba(20, 184, 166, 0.15);
+  border-radius: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  color: #64ffda;
+  transition: transform 0.3s ease;
+}
+
+.upload-zone:hover .upload-icon {
+  transform: scale(1.08);
+}
+
+.upload-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: 0.3px;
+}
+
+.upload-sub {
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.4);
+  line-height: 1.6;
+}
+
+.upload-types {
+  display: flex;
+  gap: 8px;
+  margin-top: 6px;
+}
+
+.upload-type-pill {
+  padding: 4px 12px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 20px;
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.4);
+  font-weight: 500;
+}
+
+/* ── FILE PREVIEW ── */
+.file-preview {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+}
+
+.file-thumb {
+  width: 68px;
+  height: 68px;
+  border-radius: 14px;
+  object-fit: cover;
+  border: 1px solid rgba(20, 184, 166, 0.25);
+  flex-shrink: 0;
+}
+
+.file-thumb-pdf {
+  width: 68px;
+  height: 68px;
+  border-radius: 14px;
+  background: rgba(239, 68, 68, 0.08);
+  border: 1px solid rgba(239, 68, 68, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 30px;
+  flex-shrink: 0;
+}
+
+.file-info {
+  flex: 1;
+  min-width: 0;
+  text-align: left;
+}
+
+.file-name {
+  font-size: 14px;
+  font-weight: 600;
+  color: #ffffff;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.file-size {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.35);
+  margin-top: 4px;
+}
+
+.file-remove {
+  background: rgba(239, 68, 68, 0.1);
+  border: 1px solid rgba(239, 68, 68, 0.15);
+  border-radius: 10px;
+  color: #f87171;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 8px 14px;
+  cursor: pointer;
+  transition: all 0.2s;
+  flex-shrink: 0;
+}
+
+.file-remove:hover {
+  background: #ef4444;
+  color: #ffffff;
+  border-color: #ef4444;
+}
+
+/* ── ANALYZE BUTTON ── */
+.analyze-row {
+  padding: 20px 28px;
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.analyze-btn {
+  flex: 1;
+  padding: 16px;
+  background: linear-gradient(135deg, #14b8a6, #0d9488);
+  border: none;
+  border-radius: 16px;
+  color: #03342c;
+  font-weight: 700;
+  font-size: 15px;
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  box-shadow: 0 4px 15px rgba(20, 184, 166, 0.2);
+}
+
+.analyze-btn:hover {
+  opacity: 0.95;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(20, 184, 166, 0.3);
+}
+
+.analyze-btn:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+/* ── MODERLEŞTİRİLMİŞ TARAMA ANİMASYONU ── */
+.analyzing-state {
+  margin: 0 28px;
+  padding: 40px 28px;
+  background: #1c1a2e;
+  border: 1px solid rgba(20, 184, 166, 0.2);
+  border-radius: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  text-align: center;
+  position: relative;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+}
+
+/* Siber Halka Efekti */
+.analyzing-spinner {
+  width: 54px;
+  height: 54px;
+  border: 3px dashed rgba(100, 255, 218, 0.2);
+  border-top: 3px solid #64ffda;
+  border-bottom: 3px solid #64ffda;
+  border-radius: 50%;
+  animation: spin 1.5s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+  position: relative;
+}
+
+/* İniş Çıkış Yapan Siber Lazer Çizgisi */
+.analyzing-state::after {
+  content: "";
+  position: absolute;
+  left: 5%;
+  right: 5%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #64ffda, transparent);
+  box-shadow: 0 0 12px #64ffda, 0 0 4px #64ffda;
+  animation: laserScan 2.5s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes laserScan {
+  0% { top: 15%; opacity: 0; }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { top: 85%; opacity: 0; }
+}
+
+.analyzing-text {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.5);
+  z-index: 1;
+}
+
+.analyzing-text strong {
+  display: block;
+  font-size: 17px;
+  color: #ffffff;
+  margin-bottom: 6px;
+  letter-spacing: 0.3px;
+}
+
+/* ── RESULTS (Sonuçlar Paneli) ── */
+.results-section {
+  padding: 24px 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.results-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  padding-bottom: 12px;
+}
+
+.results-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.results-total {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.results-total strong {
+  color: #64ffda;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+/* ── RECEIPT SUMMARY (Özet Alanı) ── */
+.receipt-summary {
+  padding: 18px 20px;
+  background: rgba(20, 184, 166, 0.04);
+  border: 1px solid rgba(20, 184, 166, 0.12);
+  border-radius: 18px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.receipt-summary-icon {
+  font-size: 26px;
+}
+
+.receipt-summary-info { flex: 1; }
+.receipt-merchant { font-size: 16px; font-weight: 700; color: #ffffff; }
+.receipt-date     { font-size: 12px; color: rgba(255, 255, 255, 0.4); margin-top: 4px; }
+
+/* ── ITEM LIST (Ürün Listesi) ── */
+.receipt-items {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.receipt-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 18px;
+  background: #1c1a2e;
+  border: 1px solid rgba(255, 255, 255, 0.03);
+  border-radius: 16px;
+  transition: all 0.2s ease;
+}
+
+.receipt-item:hover {
+  background: #23213a;
+  border-color: rgba(20, 184, 166, 0.15);
+  transform: scale(1.01);
+}
+
+.item-category-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  box-shadow: 0 0 8px currentColor;
+}
+
+.item-name {
+  flex: 1;
+  font-size: 14px;
+  font-weight: 500;
+  color: #e2f0f9;
+}
+
+.item-category-badge {
+  font-size: 11px;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  color: rgba(255, 255, 255, 0.5);
+  white-space: nowrap;
+}
+
+.item-price {
+  font-size: 14px;
+  font-weight: 700;
+  color: #f87171;
+  white-space: nowrap;
+  min-width: 80px;
+  text-align: right;
+}
+
+/* ── CONFIRM ROW ── */
+.confirm-row {
+  display: flex;
+  gap: 12px;
+  padding-top: 8px;
+}
+
+.confirm-btn {
+  flex: 1;
+  padding: 14px;
+  border: none;
+  border-radius: 14px;
+  font-weight: 700;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.confirm-btn:hover {
+  transform: translateY(-1px);
+  filter: brightness(1.1);
+}
+
+.confirm-btn.primary {
+  background: #14b8a6;
+  color: #03342c;
+  box-shadow: 0 4px 12px rgba(20, 184, 166, 0.15);
+}
+
+.confirm-btn.secondary {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: rgba(255, 255, 255, 0.6);
+}
+
+/* ── SUCCESS STATE ── */
+.success-state {
+  margin: 0 28px;
+  padding: 40px 28px;
+  background: #1c1a2e;
+  border: 1px solid rgba(34, 197, 94, 0.2);
+  border-radius: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  text-align: center;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+}
+
+.success-icon { font-size: 44px; }
+.success-title { font-size: 18px; font-weight: 700; color: #4ade80; }
+.success-sub   { font-size: 13px; color: rgba(255, 255, 255, 0.4); }
+
+.success-new-btn {
+  margin-top: 12px;
+  padding: 12px 24px;
+  background: rgba(20, 184, 166, 0.08);
+  border: 1px solid rgba(20, 184, 166, 0.2);
+  border-radius: 12px;
+  color: #64ffda;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.success-new-btn:hover {
+  background: #14b8a6;
+  color: #03342c;
+  border-color: #14b8a6;
+}
+
+/* ── ERROR STATE ── */
+.error-box {
+  margin: 0 28px;
+  padding: 18px 20px;
+  background: rgba(239, 68, 68, 0.06);
+  border: 1px solid rgba(239, 68, 68, 0.15);
+  border-radius: 16px;
+  font-size: 13px;
+  color: #fca5a5;
+  line-height: 1.6;
+}
+
+.error-box strong {
+  display: block;
+  color: #f87171;
+  font-size: 14px;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+/* ═══════════════════════════════════════
+   LIGHT TEMA — RECEIPT PANEL
+═══════════════════════════════════════ */
+.theme-light .upload-zone {
+  background: #f8fafc;
+  border-color: rgba(13,148,136,0.25);
+}
+
+.theme-light .upload-zone:hover,
+.theme-light .upload-zone.drag-over {
+  background: #f1f5f9;
+  border-color: #0d9488;
+  box-shadow: 0 12px 40px rgba(13,148,136,0.1);
+}
+
+.theme-light .upload-icon {
+  background: rgba(13,148,136,0.08);
+  border-color: rgba(13,148,136,0.15);
+  color: #0d9488;
+}
+
+.theme-light .upload-title { color: #1a202c; }
+.theme-light .upload-sub   { color: #64748b; }
+
+.theme-light .upload-type-pill {
+  background: rgba(0,0,0,0.03);
+  border-color: rgba(0,0,0,0.08);
+  color: #94a3b8;
+}
+
+.theme-light .file-name { color: #1a202c; }
+.theme-light .file-size { color: #94a3b8; }
+
+.theme-light .analyzing-state {
+  background: #f8fafc;
+  border-color: rgba(13,148,136,0.2);
+}
+
+.theme-light .analyzing-spinner {
+  border-color: rgba(13,148,136,0.2);
+  border-top-color: #0d9488;
+  border-bottom-color: #0d9488;
+}
+
+.theme-light .analyzing-state::after {
+  background: linear-gradient(90deg, transparent, #0d9488, transparent);
+  box-shadow: 0 0 12px #0d9488;
+}
+
+.theme-light .analyzing-text        { color: #64748b; }
+.theme-light .analyzing-text strong { color: #1a202c; }
+
+.theme-light .results-header {
+  border-bottom-color: rgba(0,0,0,0.07);
+}
+.theme-light .results-title  { color: #1a202c; }
+.theme-light .results-total  { color: #64748b; }
+.theme-light .results-total strong { color: #0d9488; }
+
+.theme-light .receipt-summary {
+  background: rgba(13,148,136,0.04);
+  border-color: rgba(13,148,136,0.15);
+}
+.theme-light .receipt-merchant { color: #1a202c; }
+.theme-light .receipt-date     { color: #94a3b8; }
+
+.theme-light .receipt-item {
+  background: #ffffff;
+  border-color: rgba(0,0,0,0.05);
+}
+.theme-light .receipt-item:hover {
+  background: #f8fafc;
+  border-color: rgba(13,148,136,0.15);
+}
+
+.theme-light .item-name { color: #1a202c; }
+.theme-light .item-category-badge {
+  background: rgba(0,0,0,0.04);
+  border-color: rgba(0,0,0,0.07);
+  color: #64748b;
+}
+
+.theme-light .confirm-btn.secondary {
+  background: rgba(0,0,0,0.04);
+  border-color: rgba(0,0,0,0.1);
+  color: #64748b;
+}
+
+.theme-light .success-state {
+  background: #f8fafc;
+  border-color: rgba(34,197,94,0.2);
+}
+.theme-light .success-sub { color: #64748b; }
+
+.theme-light .success-new-btn {
+  background: rgba(13,148,136,0.08);
+  border-color: rgba(13,148,136,0.2);
+  color: #0d9488;
+}
+.theme-light .success-new-btn:hover {
+  background: #0d9488;
+  color: #ffffff;
+}
+
+.theme-light .error-box {
+  background: rgba(239,68,68,0.04);
+  border-color: rgba(239,68,68,0.15);
+}
